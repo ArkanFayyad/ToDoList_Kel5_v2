@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList - Sederhana & Efektif</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-tasks"></i> <!-- Ikon lebih premium -->
+                <h1>ToDoList</h1>
+            </div>
+            <div class="user-info">
+                <span class="username" id="username">Loading...</span>
+                <i class="fas fa-circle status-dot"></i>
+            </div>
+        </div>
+        <div class="header-stats">
+            <div class="stat">
+                <span id="totalCount">0</span>
+                <small>Total</small>
+            </div>
+            <div class="stat">
+                <span id="priorityCount" class="priority">0</span>
+                <small>Penting</small>
+            </div>
+            <div class="stat">
+                <span id="doneCount" class="done">0</span>
+                <small>Selesai</small>
+            </div>
+        </div>
+        <button class="logout-btn" id="logoutBtn" title="Keluar">
+            <i class="fas fa-sign-out-alt"></i>
+        </button>
+    </header>
+
+    <!-- Sisanya sama seperti sebelumnya -->
+    <main class="main">
+        <!-- Filter Tabs -->
+        <div class="tabs">
+            <button class="tab active" data-filter="all">
+                <i class="fas fa-list"></i> Semua
+            </button>
+            <button class="tab" data-filter="today">
+                <i class="fas fa-calendar-today"></i> Hari Ini
+            </button>
+            <button class="tab" data-filter="priority">
+                <i class="fas fa-star"></i> Penting
+            </button>
+            <button class="tab" data-filter="done">
+                <i class="fas fa-check-double"></i> Selesai
+            </button>
+        </div>
+
+        <!-- Add Task Form -->
+        <form class="add-task-form" id="addTaskForm">
+            <div class="input-group">
+                <input type="text" id="newTask" placeholder="Apa yang ingin kamu kerjakan hari ini?" maxlength="80" required>
+                <button type="submit" class="add-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="task-options">
+                <label class="option">
+                    <input type="checkbox" id="isPriority">
+                    <i class="fas fa-star"></i>
+                    <span>Penting</span>
+                </label>
+                <label class="option">
+                    <input type="date" id="dueDate">
+                    <i class="fas fa-calendar"></i>
+                    <span>Tanggal</span>
+                </label>
+            </div>
+        </form>
+
+        <!-- Tasks List -->
+        <div class="tasks-list" id="tasksList">
+            <div class="empty-state">
+                <i class="fas fa-clipboard-list"></i>
+                <h2>Tidak ada tugas</h2>
+                <p>Tulis tugas pertama kamu di atas</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> Edit Tugas</h3>
+                <button class="close-btn" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="editForm">
+                <input type="text" id="editTitle" placeholder="Nama tugas" maxlength="80" required>
+                <div class="form-row">
+                    <label class="option">
+                        <input type="checkbox" id="editPriority">
+                        <i class="fas fa-star"></i>
+                        <span>Penting</span>
+                    </label>
+                    <label class="option">
+                        <input type="date" id="editDueDate">
+                        <i class="fas fa-calendar"></i>
+                        <span>Tanggal</span>
+                    </label>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="deleteTaskBtn">Hapus</button>
+                    <button type="submit" class="btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
